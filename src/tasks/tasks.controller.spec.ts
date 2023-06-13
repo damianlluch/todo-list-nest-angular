@@ -6,7 +6,7 @@ import { Task } from './task.entity';
 import { Repository } from 'typeorm';
 import { AuthGuard } from '../auth/auth.guard';
 import { JwtService, JwtModule } from '@nestjs/jwt';
-import { CreateTaskDto, UpdateTaskDto } from "./dto/task.dto";
+import { CreateTaskDto, UpdateTaskDto } from './dto/task.dto';
 
 describe('TasksController', () => {
   let controller: TasksController;
@@ -34,7 +34,7 @@ describe('TasksController', () => {
           useValue: {
             verify: jest.fn(),
             sign: jest.fn(),
-          }
+          },
         },
       ],
     }).compile();
