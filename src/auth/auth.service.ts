@@ -23,13 +23,13 @@ export class AuthService {
       return null;
     }
     if (await bcrypt.compare(user.password, foundUser.password)) {
-      return foundUser;
+      const payload = { sub: foundUser.id, username: foundUser.username };
+      return {
+        access_token: await this.jwtService.signAsync(payload),
+        user: foundUser,
+      };
     } else {
       throw new UnauthorizedException();
     }
-    const payload = { sub: user.id, username: user.username };
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
   }
 }
