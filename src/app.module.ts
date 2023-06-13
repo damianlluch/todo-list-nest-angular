@@ -20,7 +20,8 @@ import { TasksModule } from './tasks/tasks.module';
     }),
     AuthModule,
     TasksModule,
-    UsersModule],
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
