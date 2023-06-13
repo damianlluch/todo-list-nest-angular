@@ -10,15 +10,26 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
+import { LoginDto, RegisterDto } from "./dto/user.dto";
+import { User } from "../users/user.entity";
+import { UsersService } from "../users/users.service";
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private authService: AuthService,
+  ) {}
+
+  @Post('register')
+  register(@Body() user: RegisterDto): Promise<User> {
+    return this.usersService.register(user);
+  }
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  signIn(@Body() signInDto: Record<string, any>) {
-    return this.authService.signIn(signInDto.username, signInDto.password);
+  signIn(@Body() body: LoginDto) {
+    return this.authService.signIn(body);
   }
 
   @UseGuards(AuthGuard)
