@@ -5,11 +5,12 @@ import {
   Get,
   Param,
   Post,
-  Put, UseGuards
-} from "@nestjs/common";
+  Put,
+  UseGuards,
+} from '@nestjs/common';
 import { Task } from './task.entity';
 import { TasksService } from './tasks.service';
-import { AuthGuard } from "../auth/auth.guard";
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('tasks')
 export class TasksController {
