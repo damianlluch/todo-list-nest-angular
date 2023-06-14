@@ -4,7 +4,6 @@ import { Task } from './task.entity';
 import { Repository } from 'typeorm';
 import { TasksService } from './tasks.service';
 
-
 describe('TasksService', () => {
   let service: TasksService;
   let repo: Repository<Task>;
